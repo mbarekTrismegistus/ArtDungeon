@@ -1,7 +1,8 @@
-import { Inter } from "next/font/google";
-import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
+import Providers from "./utils/providers";
+import Header from "./components/header";
+import { NextUIProvider } from "@nextui-org/react";
+import {ThemeProvider as NextThemesProvider} from "next-themes";
+import "./globals.css"
 
 export const metadata = {
   title: "Create Next App",
@@ -9,9 +10,20 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+
+
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
+    <Providers>
+        <html lang="en">
+          <body>
+            <NextUIProvider>
+              <NextThemesProvider attribute="class" defaultTheme="dark">
+                <Header/>
+                {children}
+              </NextThemesProvider>
+            </NextUIProvider>
+          </body>
+        </html>
+    </Providers>
   );
 }
