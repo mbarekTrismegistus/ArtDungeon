@@ -1,12 +1,14 @@
- 
+ import { Button } from '@nextui-org/react';
 import { useFormStatus } from 'react-dom'
+
+
  
 export function SubmitButton() {
   const { pending } = useFormStatus();
 
   return (
-    <button type="submit" disabled={pending}>
+    <Button color='primary' type="submit" isDisabled={pending}>
       Add
-    </button>
+    </Button>
   );
 }

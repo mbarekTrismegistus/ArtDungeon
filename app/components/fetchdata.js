@@ -1,4 +1,5 @@
 import prisma from "@/prisma/client";
+import ArtCard from "./card";
 
 
 export default async function Art() {
@@ -7,12 +8,10 @@ export default async function Art() {
     
     return (
 
-        <div>
+        <div className="flex flex-wrap gap-7">
             {data.map((e) => {
                 return(
-                    <div>
-                        {e.title}
-                    </div>
+                    <ArtCard art={e}/>
                 )
             })}
         </div>

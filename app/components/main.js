@@ -1,9 +1,9 @@
 import React from 'react'
 import ArtCard from './card'
 import { Button } from '@nextui-org/react'
-import { ArrowDownCircle, ArrowDownCircleFill } from 'react-bootstrap-icons'
+import { ArrowDownCircle } from 'react-bootstrap-icons'
 
-export default function Main() {
+export default function Main({children}) {
   return (
     <div>
       <div className='flex flex-col items-center h-[100vh] justify-center relative mb-5'>
@@ -47,31 +47,8 @@ export default function Main() {
       </div>
       <div className='container mx-auto'>
         <h1 className='text-5xl font-bold py-[70px] text-center '>Explore Latest Art</h1>
-        <div className='flex flex-wrap gap-7 '>
-            <ArtCard/>
-            <ArtCard/>
-            <ArtCard/>
-            <ArtCard/>
-            <ArtCard/>
-            <ArtCard/>
-            <ArtCard/>
-            <ArtCard/>
-            <ArtCard/>
-            <ArtCard/>
-            <ArtCard/>
-            <ArtCard/>
-            <ArtCard/>
-            <ArtCard/>
-            <ArtCard/>
-            <ArtCard/>
-            <ArtCard/>
-            <ArtCard/>
-            <ArtCard/>
-            <ArtCard/>
-            <ArtCard/>
-            <ArtCard/>
-            <ArtCard/>
-            <ArtCard/>
+        <div>
+          {children}
         </div>
       </div>
     </div>
