@@ -1,5 +1,5 @@
 import React from 'react'
-import FormArt from '../components/Form'
+import FormArt from '@/app/components/Form'
 import { Stars } from 'react-bootstrap-icons'
 
 export default function AddArt() {

@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Art from "./components/fetchdata";
 import Main from "./components/main";
 import localFont from 'next/font/local'
@@ -10,7 +11,9 @@ export default function Home() {
   return (
     <div className={myFont.className}>
         <Main>
-          <Art/>
+          <Suspense fallback="loading ....">
+            <Art/>
+          </Suspense>
         </Main>
     </div>
   );

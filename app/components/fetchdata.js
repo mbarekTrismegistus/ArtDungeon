@@ -4,6 +4,11 @@ import ArtCard from "./card";
 
 export default async function Art() {
     
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    await sleep(5000);
+    
     let data = await prisma.art.findMany();
     
     return (

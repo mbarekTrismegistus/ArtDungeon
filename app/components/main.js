@@ -1,6 +1,6 @@
 import React from 'react'
 import ArtCard from './card'
-import { Button } from '@nextui-org/react'
+import { Button, Chip } from '@nextui-org/react'
 import { ArrowDownCircle } from 'react-bootstrap-icons'
 
 export default function Main({children}) {
@@ -46,7 +46,51 @@ export default function Main({children}) {
         </div>
       </div>
       <div className='container mx-auto'>
-        <h1 className='text-5xl font-bold py-[70px] text-center '>Explore Latest Art</h1>
+        <h1 className='text-5xl font-bold pt-[70px] pb-[50px] text-center '>Explore Latest Art</h1>
+        <div className='flex overflow-x-scroll gap-4 mb-10'>
+          <Button size='lg' radius='full' color='primary' variant='flat'>
+            Anime
+          </Button>
+          <Button size='lg' radius='full' color='primary' variant='flat'>
+            Anime
+          </Button>
+          <Button size='lg' radius='full' color='primary' variant='flat'>
+            Anime
+          </Button>
+          <Button size='lg' radius='full' color='primary' variant='shadow'>
+            Anime
+          </Button>
+          <Button size='lg' radius='full' color='primary' variant='flat'>
+            Anime
+          </Button>
+          <Button size='lg' radius='full' color='primary' variant='flat'>
+            Anime
+          </Button>
+          <Button size='lg' radius='full' color='primary' variant='flat'>
+            Anime
+          </Button>
+          <Button size='lg' radius='full' color='primary' variant='flat'>
+            Anime
+          </Button>
+          <Button size='lg' radius='full' color='primary' variant='flat'>
+            Anime
+          </Button>
+          <Button size='lg' radius='full' color='primary' variant='flat'>
+            Anime
+          </Button>
+          <Button size='lg' radius='full' color='primary' variant='flat'>
+            Anime
+          </Button>
+          <Button size='lg' radius='full' color='primary' variant='flat'>
+            Anime
+          </Button>
+          <Button size='lg' radius='full' color='primary' variant='flat'>
+            Anime
+          </Button>
+          <Button size='lg' radius='full' color='primary' variant='flat'>
+            Anime
+          </Button>
+        </div>
         <div>
           {children}
         </div>

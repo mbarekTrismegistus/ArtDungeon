@@ -27,7 +27,8 @@ model Art{
   id Int @id() @default(autoincrement())
   title String
   description String @db.Text
-  media String[]
+  media String[] @default([])
+  // tags String[]
   user_id Int
   user User @relation(fields: [user_id], references: [id])
 
