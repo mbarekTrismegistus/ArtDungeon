@@ -2,12 +2,8 @@ import prisma from "@/prisma/client";
 import ArtCard from "./card";
 
 
-export default async function Art() {
+export default async function Arts() {
     
-    function sleep(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
-    }
-    await sleep(5000);
     
     let data = await prisma.art.findMany();
     
@@ -16,7 +12,7 @@ export default async function Art() {
         <div className="flex flex-wrap gap-7">
             {data.map((e) => {
                 return(
-                    <ArtCard art={e}/>
+                    <ArtCard art={e} key={e.id}/>
                 )
             })}
         </div>

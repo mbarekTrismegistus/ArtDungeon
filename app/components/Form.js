@@ -106,7 +106,7 @@ export default function FormArt() {
                                 <div className="flex gap-2 my-4 flex-wrap items-center">
                                     {images?.map((e) => {
                                         return(
-                                            <Image src={e} radius="sm" className="w-[60px] h-[60px]" onClick={() => setCurImage(images.indexOf(e))}/>
+                                            <Image src={e} key={images.indexOf(e)} radius="sm" className="w-[60px] h-[60px]" onClick={() => setCurImage(images.indexOf(e))}/>
                                         )
                                     })}
                                     <Button color="primary" className={`${images.length == 0 ? "hidden" : "text-center my-5"}`} isIconOnly size="lg" variant="flat" radius="full" isDisabled={fileUploading}>

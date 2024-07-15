@@ -20,7 +20,16 @@ model User{
   password String?
   image String
   art Art[]
+  likes Like[]
   
+}
+
+model Like{
+  id Int @id() @default(autoincrement())
+  artId Int
+  userId Int
+  user User @relation(fields: [userId], references: [id])
+  Art Art @relation(fields: [artId], references: [id])
 }
 
 model Art{
@@ -30,6 +39,7 @@ model Art{
   media String[] @default([])
   // tags String[]
   user_id Int
+  likes Like[]
   user User @relation(fields: [user_id], references: [id])
 
 }

@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import Art from "./components/fetchdata";
+import Arts from "./components/fetchdata";
 import Main from "./components/main";
 import localFont from 'next/font/local'
 
@@ -12,7 +12,7 @@ export default function Home() {
     <div className={myFont.className}>
         <Main>
           <Suspense fallback="loading ....">
-            <Art/>
+            <Arts/>
           </Suspense>
         </Main>
     </div>
