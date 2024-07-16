@@ -37,7 +37,7 @@ export default function Art(props) {
                 <CarouselPrevious />
                 <CarouselNext />
             </Carousel>
-            <div className="flex items-center max-w-[75vw] mx-auto">
+            <div className="flex items-center max-w-[90vw] mx-auto">
                 <div className="w-[100vw]">
                     <h1 className="text-5xl font-bold py-5">{data.title}</h1>
                     {data.description}

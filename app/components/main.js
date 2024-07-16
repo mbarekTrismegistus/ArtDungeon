@@ -1,6 +1,7 @@
+"use client"
+
 import React from 'react'
-import ArtCard from './card'
-import { Button, Chip } from '@nextui-org/react'
+import { Button } from '@nextui-org/react'
 import { ArrowDownCircle } from 'react-bootstrap-icons'
 
 export default function Main({children}) {
