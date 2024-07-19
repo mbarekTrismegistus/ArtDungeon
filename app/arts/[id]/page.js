@@ -11,6 +11,9 @@ export default async function page({params}) {
     let data = await prisma.art.findUnique({
         where: {
             id: Number(params.id)
+        },
+        include: {
+            user: true
         }
     });
     

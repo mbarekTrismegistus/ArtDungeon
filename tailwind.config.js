@@ -31,7 +31,7 @@ module.exports = {
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
+          DEFAULT: "#8839ef",
           foreground: "hsl(var(--secondary-foreground))",
         },
         destructive: {
@@ -80,13 +80,15 @@ module.exports = {
     "themes": {
         "dark": {
           "colors": {
-            "primary": "#14b8a6"
+            "primary": "#14b8a6",
+            "secondary": "#8839ef"
           }
           
         },
         "light": {
           "colors": {
-            "primary": "#14b8a6"
+            "primary": "#14b8a6",
+            "secondary": "#8839ef"
           }
         }
       },

@@ -22,6 +22,7 @@ model User{
   image String
   art Art[]
   likes Like[]
+  comments Comment[]
   
 }
 
@@ -42,5 +43,17 @@ model Art{
   user_id Int
   likes Like[]
   user User @relation(fields: [user_id], references: [id])
+  postedAt DateTime @default(now())
+  comments Comment[]
 
+}
+
+model Comment{
+  id Int @id() @default(autoincrement())
+  content String @db.Text
+  userId Int
+  artId Int
+  commentedAt DateTime @default(now())
+  user User @relation(fields: [userId], references: [id])
+  Art Art @relation(fields: [artId], references: [id])
 }
