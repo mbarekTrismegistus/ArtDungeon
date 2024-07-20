@@ -1,4 +1,3 @@
-import prisma from "@/prisma/client";
 import ArtCard from "./card";
 import { db } from "../db";
 

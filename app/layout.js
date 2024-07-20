@@ -3,7 +3,6 @@ import Header from "./components/header";
 import { NextUIProvider } from "@nextui-org/react";
 import {ThemeProvider as NextThemesProvider} from "next-themes";
 import "./globals.css"
-import prisma from "@/prisma/client";
 
 export const metadata = {
   title: "Create Next App",

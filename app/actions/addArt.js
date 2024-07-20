@@ -1,6 +1,5 @@
 "use server";
 
-import prisma from "@/prisma/client";
 import { revalidatePath } from "next/cache";
 import { imgbbUploader } from "imgbb-uploader";
 import { db } from "../db";
