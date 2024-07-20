@@ -3,6 +3,8 @@
 import prisma from "@/prisma/client";
 import { revalidatePath } from "next/cache";
 import { imgbbUploader } from "imgbb-uploader";
+import { db } from "../db";
+import { art } from "@/drizzle/schema";
 
 
  
@@ -16,15 +18,13 @@ export default async function AddArt(prevState,formData) {
       message: "C'mon add some images of ur beautiful art"
     }
   }
-
+  console.log(formData)
   try {
-    let res = await prisma.art.create({
-      data: {
-        title: formData.get("title"),
-        description: formData.get("description"),
-        media: media,
-        user_id: Number(formData.get("userId"))
-      }
+    let res = await db.insert(art).values({
+      title: formData.get("title"),
+      description: formData.get("description"),
+      media: media,
+      userId: Number(formData.get("userId"))
     })
     if(res){
       revalidatePath("/")

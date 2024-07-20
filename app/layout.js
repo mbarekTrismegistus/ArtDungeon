@@ -12,15 +12,6 @@ export const metadata = {
 
 export default async function RootLayout({ children }) {
 
-  let isConnected
-
-  try {
-    isConnected = await prisma.$queryRaw`SELECT 1`;
-    console.log(isConnected)
-  } catch (error) {
-    console.log(error)
-  }
- 
 
 
   return (
@@ -30,12 +21,7 @@ export default async function RootLayout({ children }) {
             <NextUIProvider>
               <NextThemesProvider attribute="class" defaultTheme="dark">
                 <Header/>
-                {
-                  isConnected ?
-                  children
-                  :
-                  <div className="mt-[80px]">Not connected</div>
-                }
+                {children}
               </NextThemesProvider>
             </NextUIProvider>
           </body>

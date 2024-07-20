@@ -1,11 +1,12 @@
 import prisma from "@/prisma/client";
 import ArtCard from "./card";
+import { db } from "../db";
 
 
 export default async function Arts() {
     
     
-    let data = await prisma.art.findMany();
+    let data = await db.query.art.findMany()
     
     return (
 

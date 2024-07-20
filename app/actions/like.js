@@ -1,6 +1,8 @@
 "use server"
 
-import prisma from "@/prisma/client";
+import { db } from "../db";
+import { like } from "@/drizzle/schema";
+import { and, eq } from "drizzle-orm";
 
 
 
@@ -8,11 +10,9 @@ import prisma from "@/prisma/client";
 export async function Like(userId, artId){
 
 
-    let res = await prisma.like.create({
-        data: {
-            artId: artId,
-            userId: userId
-        }
+    let res = await db.insert(like).values({
+        artId: artId,
+        userId: userId
     })
     return res
 
@@ -20,19 +20,17 @@ export async function Like(userId, artId){
 }
 
 export async function unLike(userId, artId){
+
     
-    let like = await prisma.like.findFirst({
-        where: {
-            userId: userId,
-            artId: artId
-        }
-    })
-    if(like){
-        let res = await prisma.like.delete({
-            where: {
-                id: like.id
-            }
-        })
+    let isLike = await db.select().from(like).where(and(
+        eq(like.artId, artId),
+        eq(like.userId, userId)
+    ))
+
+    if(isLike){
+        let res = await db.delete(like).where(
+            eq(like.id, isLike[0].id)
+        )
         return res
     }
 

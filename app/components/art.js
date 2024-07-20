@@ -1,6 +1,6 @@
 "use client"
 
-import { Button, Image, Textarea, Tooltip } from "@nextui-org/react";
+import { Avatar, Button, Image, Textarea, Tooltip } from "@nextui-org/react";
 import {
   Carousel,
   CarouselContent,
@@ -48,7 +48,7 @@ export default function Art(props) {
                 
                 <div className="px-10 pt-5">
                     <div className="flex mt-5">
-                        <Image src={data.user.image} radius="none" removeWrapper className="min-w-[65px] max-h-[65px] me-4"/>
+                        <Avatar src={data.user.image} isBordered isFocusable className="w-20 h-20 me-4" color="primary"/>
                         <div>
                             <h1 className="text-4xl font-extrabold">{data.title}</h1>
                             <h1 className="my-2">By <span className="font-bold">{data.user.username}</span></h1>
@@ -111,7 +111,17 @@ export default function Art(props) {
                         className="col-span-12 md:col-span-6 mb-6 mt-5"
                         endContent={<SubmitButton/>}
                     />
+                    <input type="hidden" name="artId" value={data.id}/>
                 </form>
+                <div>
+                    {data.comment.map((c) => {
+                        return(
+                            <div>
+                                {c.content}
+                            </div>
+                        )
+                    })}
+                </div>
             </div>
         </div>
     )
