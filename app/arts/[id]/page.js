@@ -2,7 +2,7 @@ import Art from "@/app/components/art"
 import { Suspense } from "react"
 import { auth } from "@/app/auth";
 import { db } from "@/app/db";
-import { and, count, desc, eq, sql } from "drizzle-orm";
+import { and, count, desc, eq } from "drizzle-orm";
 import { art, comment, like } from "@/drizzle/schema";
 
 export default async function page({params}) {
@@ -26,7 +26,6 @@ export default async function page({params}) {
 
     let likeNumber = await db.select({count: count()}).from(like).where(eq(like.artId, Number(params.id)))
     let countComment = await db.select({count: count()}).from(comment).where(eq(comment.artId, Number(params.id))) 
-    console.log(countComment)
 
     let isLiked = session ? await db.select().from(like).where(and(
         eq(like.artId, Number(params.id)),
