@@ -1,6 +1,5 @@
 import NextAuth from "next-auth"
 import Google from "next-auth/providers/google"
-import prisma from "@/prisma/client"
 import { db } from "./db"
 import { eq } from "drizzle-orm"
 import { users } from "@/drizzle/schema"
