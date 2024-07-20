@@ -1,19 +1,19 @@
 "use server"
 
-import prisma from "@/prisma/client";
+
 import { auth } from "../auth";
 import { revalidatePath } from "next/cache";
+import { db } from "../db";
+import { comment } from "@/drizzle/schema";
 
-export default async function comment(prevState, formData){
+export default async function commentAction(prevState, formData){
     
     let session = await auth()
 
-    let res = await prisma.comment.create({
-        data: {
-            content: formData.get("content"),
-            userId: session.user.id,
-            artId: Number(formData.get("artId"))
-        }
+    let res = await db.insert(comment).values({
+        content: formData.get("content"),
+        userId: session.user.id,
+        artId: Number(formData.get("artId"))
     })
 
     if(res){

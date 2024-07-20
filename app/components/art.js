@@ -11,7 +11,7 @@ import {
 import { useState } from "react";
 import { Like, unLike } from "../actions/like";
 import { PiHeart } from "react-icons/pi";
-import comment from "../actions/comments";
+import commentAction from "../actions/comments";
 import { useFormState } from "react-dom";
 import { FaRegComment } from "react-icons/fa6";
 import { SubmitButton } from "./submitButton";
@@ -25,7 +25,7 @@ export default function Art(props) {
     let data = props.data
     const [isLiked, setIsLiked] = useState(props.isLiked)
     const [liking, setIsliking] = useState(false)
-    const [state, formAction] = useFormState(comment, initialState)
+    const [state, formAction] = useFormState(commentAction, initialState)
     
     return (
 
@@ -86,11 +86,11 @@ export default function Art(props) {
                                     </Tooltip>
                         
                                 }
-                                <p className="ms-4">100 likes</p>
+                                <p className="ms-4">{props.likeCount} likes</p>
                                 </div>
                                 <div className="flex items-center pt-5">
                                     <FaRegComment size={25}/>
-                                <p className="ms-4">100 likes</p>
+                                <p className="ms-4">{props.commentCount} comments</p>
                                 </div>
                             </div>
                         </div>
@@ -116,8 +116,12 @@ export default function Art(props) {
                 <div>
                     {data.comment.map((c) => {
                         return(
-                            <div>
-                                {c.content}
+                            <div className="flex gap-4 items-center py-5" key={c.id}>
+                                <Avatar src={c.user.image} size="lg"/>
+                                <div>
+                                    <p className="font-bold">{c.user.username}</p>
+                                    {c.content}
+                                </div>
                             </div>
                         )
                     })}

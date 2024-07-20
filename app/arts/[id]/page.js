@@ -2,7 +2,7 @@ import Art from "@/app/components/art"
 import { Suspense } from "react"
 import { auth } from "@/app/auth";
 import { db } from "@/app/db";
-import { and, asc, eq } from "drizzle-orm";
+import { and, count, desc, eq, sql } from "drizzle-orm";
 import { art, comment, like } from "@/drizzle/schema";
 
 export default async function page({params}) {
@@ -17,12 +17,16 @@ export default async function page({params}) {
                 with: {
                     user: true
                 },
-                orderBy: [asc(comment.commentedAt)]
+                orderBy: [desc(comment.commentedAt)],
+                
             },
             user: true
         }
     })
 
+    let likeNumber = await db.select({count: count()}).from(like).where(eq(like.artId, Number(params.id)))
+    let countComment = await db.select({count: count()}).from(comment).where(eq(comment.artId, Number(params.id))) 
+    console.log(countComment)
 
     let isLiked = session ? await db.select().from(like).where(and(
         eq(like.artId, Number(params.id)),
@@ -35,7 +39,7 @@ export default async function page({params}) {
     return (
         <div className="mt-[80px]">
             <Suspense fallback=" loading...">
-                <Art data={data} isLiked={isLiked.length === 0 ? false : true} userId={session ? session.user.id : undefined}/>
+                <Art data={data} likeCount={likeNumber[0].count} commentCount={countComment[0].count} isLiked={isLiked.length === 0 ? false : true} userId={session ? session.user.id : undefined}/>
             </Suspense>
         </div>
     )
