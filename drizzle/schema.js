@@ -17,6 +17,7 @@ export const art = pgTable('art',{
     description: text('description').notNull(),
     media: varchar('media').array(),
     postedAt: timestamp('postedAt').defaultNow(),
+    tags: varchar('tags').array(),
     userId: integer('userId').references(() => users.id)
 })
 

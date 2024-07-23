@@ -5,6 +5,9 @@ import { db } from "@/app/db";
 import { and, count, desc, eq } from "drizzle-orm";
 import { art, comment, like } from "@/drizzle/schema";
 
+
+export const revalidate = 0
+
 export default async function page({params}) {
 
     let session = await auth()

@@ -2,7 +2,8 @@
 
 import React from 'react'
 import { Button } from '@nextui-org/react'
-import { ArrowDownCircle } from 'react-bootstrap-icons'
+import { Arrow90degLeft, ArrowDownCircle } from 'react-bootstrap-icons'
+import { Carousel, CarouselContent, CarouselNext, CarouselPrevious } from '@/components/ui/carousel'
 
 export default function Main({children}) {
   return (
@@ -48,50 +49,54 @@ export default function Main({children}) {
       </div>
       <div className='container mx-auto'>
         <h1 className='text-5xl font-bold pt-[70px] pb-[50px] text-center '>Explore Latest Art</h1>
-        <div className='flex overflow-x-scroll gap-4 mb-10'>
-          <Button size='lg' radius='full' color='primary' variant='flat'>
-            Anime
-          </Button>
-          <Button size='lg' radius='full' color='primary' variant='flat'>
-            Anime
-          </Button>
-          <Button size='lg' radius='full' color='primary' variant='flat'>
-            Anime
-          </Button>
-          <Button size='lg' radius='full' color='primary' variant='shadow'>
-            Anime
-          </Button>
-          <Button size='lg' radius='full' color='primary' variant='flat'>
-            Anime
-          </Button>
-          <Button size='lg' radius='full' color='primary' variant='flat'>
-            Anime
-          </Button>
-          <Button size='lg' radius='full' color='primary' variant='flat'>
-            Anime
-          </Button>
-          <Button size='lg' radius='full' color='primary' variant='flat'>
-            Anime
-          </Button>
-          <Button size='lg' radius='full' color='primary' variant='flat'>
-            Anime
-          </Button>
-          <Button size='lg' radius='full' color='primary' variant='flat'>
-            Anime
-          </Button>
-          <Button size='lg' radius='full' color='primary' variant='flat'>
-            Anime
-          </Button>
-          <Button size='lg' radius='full' color='primary' variant='flat'>
-            Anime
-          </Button>
-          <Button size='lg' radius='full' color='primary' variant='flat'>
-            Anime
-          </Button>
-          <Button size='lg' radius='full' color='primary' variant='flat'>
-            Anime
-          </Button>
-        </div>
+        <Carousel className="max-w-[80vw] mb-10 mx-auto">
+          <CarouselContent className="ms-1 gap-4 py-3">
+            <Button size='lg' radius='full' color='primary' variant='flat'>
+              Anime
+            </Button>
+            <Button size='lg' radius='full' color='primary' variant='flat'>
+              Anime
+            </Button>
+            <Button size='lg' radius='full' color='primary' variant='flat'>
+              Anime
+            </Button>
+            <Button size='lg' radius='full' color='primary' variant='shadow'>
+              Anime
+            </Button>
+            <Button size='lg' radius='full' color='primary' variant='flat'>
+              Anime
+            </Button>
+            <Button size='lg' radius='full' color='primary' variant='flat'>
+              Anime
+            </Button>
+            <Button size='lg' radius='full' color='primary' variant='flat'>
+              Anime
+            </Button>
+            <Button size='lg' radius='full' color='primary' variant='flat'>
+              Anime
+            </Button>
+            <Button size='lg' radius='full' color='primary' variant='flat'>
+              Anime
+            </Button>
+            <Button size='lg' radius='full' color='primary' variant='flat'>
+              Anime
+            </Button>
+            <Button size='lg' radius='full' color='primary' variant='flat'>
+              Anime
+            </Button>
+            <Button size='lg' radius='full' color='primary' variant='flat'>
+              Anime
+            </Button>
+            <Button size='lg' radius='full' color='primary' variant='flat'>
+              Anime
+            </Button>
+            <Button size='lg' radius='full' color='primary' variant='flat'>
+              Anime
+            </Button>
+          </CarouselContent>
+          <CarouselPrevious/>
+          <CarouselNext/>
+        </Carousel>
         <div>
           {children}
         </div>

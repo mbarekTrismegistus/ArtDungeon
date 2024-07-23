@@ -31,7 +31,7 @@ export default function Header() {
               </NavbarContent>
             :
             <div className='flex items-center gap-4'>
-              <Avatar isBordered src={session.data.user.image}/>
+              <Avatar isBordered src={session.data.user.image} color='primary'/>
               <Button color='danger' radius='full' variant='flat' onClick={() => signOut()}>Sign Out</Button>
             </div>
 

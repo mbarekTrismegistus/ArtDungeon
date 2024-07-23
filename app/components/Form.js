@@ -8,7 +8,8 @@ import { useFormState } from "react-dom";
 import { useState } from "react";
 import { Images, PlusCircle } from "react-bootstrap-icons";
 import { useSession } from "next-auth/react";
-
+import { TagInput } from "emblor";
+import { useFormStatus } from 'react-dom'
 
 const initialState = {
     noMedia: false,
@@ -23,31 +24,64 @@ export default function FormArt() {
     const [images, setImages] = useState([])
     const [curImage, setCurImage] = useState(0)
     const [validated, setValidated] = useState({})
+    const [tags, setTags] = useState([]);
+    const [activeTagIndex, setActiveTagIndex] = useState(null);
+    const { pending } = useFormStatus();
 
     let session = useSession()
 
     function validate(e){
-        if(e.target.value === ""){
-            setValidated((prev) => {
-                return {
-                    ...prev,
-                    [e.target.name]: {
-                        isInvalid: true,
-                        msg: `Please enter a ${[e.target.name]}`
+            if(e.target.value === ""){
+                setValidated((prev) => {
+                    return {
+                        ...prev,
+                        [e.target.name]: {
+                            isInvalid: true,
+                            msg: `Please enter a ${[e.target.name]}`
+                        }
                     }
-                }
-            })
+                })
+            }
+            else{
+                setValidated((prev) => {
+                    return {
+                        ...prev,
+                        [e.target.name]: {
+                            isInvalid: false,
+                            msg: ""
+                        }
+                    }
+                })
+            }
         }
-        else{
+    
+    function isValid(){
+        if(validated.title?.isInvalid || validated.title?.isInvalid === undefined){
             setValidated((prev) => {
                 return {
                     ...prev,
-                    [e.target.name]: {
-                        isInvalid: false,
-                        msg: ""
+                    title: {
+                        isInvalid: true,
+                        msg: `Please enter a title`
                     }
                 }
             })
+            return false
+        }
+        else if(validated.description?.isInvalid || validated.title?.isInvalid === undefined){
+            setValidated((prev) => {
+                return {
+                    ...prev,
+                    description: {
+                        isInvalid: true,
+                        msg: `Please enter a description`
+                    }
+                }
+            })
+            return false
+        }
+        else {
+            return true
         }
     }
 
@@ -138,12 +172,33 @@ export default function FormArt() {
                             }
                         </div>
                         <div className="flex-1 py-3">
-                            <form action={formAction}>
+                            <form action={(formadata) => {
+                                let isvalide = isValid()
+                                if(isvalide){
+                                    formAction(formadata)
+                                }
+                            }}>
                                 <Input name="title" isInvalid={validated.title?.isInvalid} errorMessage={validated.title?.msg}  onChange={validate} label="Title" className="mb-5" placeholder="Add a Title"/>
                                 <Textarea name="description" isInvalid={validated.description?.isInvalid} errorMessage={validated.description?.msg} onChange={validate} label="Description" className="mb-5" placeholder="Describe Your Piece Art !"/>
-                                <Input name="media" value={images} label="Tags" className="mb-5" placeholder="Add Tags"/>
+                                <input type="hidden" name="media" value={images}/>
                                 <input type="hidden" value={session.data.user.id} name="userId"/>
-                                <SubmitButton color="primary" radius="full">Add ! </SubmitButton>
+                                <TagInput 
+                                    setTags = {(newTags) => {setTags(newTags)}}
+                                    tags={tags}
+                                    placeholder = "Add tags"
+                                    activeTagIndex = {activeTagIndex}
+                                    setActiveTagIndex = {setActiveTagIndex}
+                                    shape = {
+                                        "pill"
+                                    }
+                                    animation = {
+                                        "fadeIn"
+                                    }
+                                    size={"lg"}
+                                />
+                                <Button color='primary' type="submit" radius='full' className='mt-5' isDisabled={pending}>
+                                    Add
+                                </Button>
                             </form>
                             <p>{state?.message}</p>
                         </div>

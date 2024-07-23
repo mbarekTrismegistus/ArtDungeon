@@ -5,6 +5,7 @@ import localFont from 'next/font/local'
 
 
 const myFont = localFont({ src: '../public/Nexa-Heavy.ttf' })
+export const revalidate = 0
 
 
 export default function Home() {
