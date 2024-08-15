@@ -23,6 +23,7 @@ export default function Login() {
         <form action={formAction}>
             <Input name="username" className="my-5"/>
             <Input name="password" className="my-5"/>
+            {state?.error ? <div className="text-red-500">{state.error}</div> : null}
             <Separator className="mt-10"/>
             <GoogleLogin onSuccess={(c) => {
               handleGoogleAuth(c)
@@ -30,7 +31,9 @@ export default function Login() {
             type="icon"
             theme="outline"
             shape="pill"/>
+            
             <SubmitButton>Login</SubmitButton>
+            
         </form>
     </div>
   )
