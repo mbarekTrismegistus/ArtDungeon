@@ -10,7 +10,7 @@ import handleGoogleAuth from "../actions/googleauth";
 
 
 
-export default function page() {
+export default function Login() {
 
     const initialState = {
 

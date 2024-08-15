@@ -4,7 +4,7 @@ import { signUp } from "../actions/auth"
 import { useFormState } from "react-dom";
 import { SubmitButton } from "../components/submitButton";
 
-export default function page() {
+export default function SignUp() {
 
     const initialState = {
 
