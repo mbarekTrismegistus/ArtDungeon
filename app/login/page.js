@@ -30,7 +30,7 @@ export default function Login() {
             type="icon"
             theme="outline"
             shape="pill"/>
-            <SubmitButton/>
+            <SubmitButton>Login</SubmitButton>
         </form>
     </div>
   )
