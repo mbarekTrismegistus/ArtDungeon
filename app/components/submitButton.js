@@ -3,12 +3,12 @@ import { useFormStatus } from 'react-dom'
 
 
  
-export function SubmitButton() {
+export function SubmitButton({children}) {
   const { pending } = useFormStatus();
 
   return (
     <Button color='primary' type="submit" radius='full' className='mt-5' isDisabled={pending}>
-      Add
+      {children}
     </Button>
   );
 }

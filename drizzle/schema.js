@@ -18,13 +18,13 @@ export const art = pgTable('art',{
     media: varchar('media').array(),
     postedAt: timestamp('postedAt').defaultNow(),
     tags: varchar('tags').array(),
-    userId: integer('userId').references(() => users.id)
+    userId: integer('userId').references(() => users.id, {onDelete: 'cascade'})
 })
 
 export const like = pgTable('like', {
     id: serial('id').primaryKey({autoIncrement: true}),
     artId: integer('artId').references(() => art.id),
-    userId: integer('userId').references(() => users.id)
+    userId: integer('userId').references(() => users.id, {onDelete: 'cascade'})
 
 })
 
@@ -32,8 +32,9 @@ export const comment = pgTable('comment', {
     id: serial('id').primaryKey({autoIncrement: true}),
     content: text('content').notNull(),
     commentedAt: timestamp('commentedAt').defaultNow(),
-    artId: integer('artId').references(() => art.id),
-    userId: integer('userId').references(() => users.id)
+    artId: integer('artId').references(() => art.id, {onDelete: 'cascade'}),
+    userId: integer('userId').references(() => users.id, {onDelete: 'cascade'}),
+    parrentId: integer('parrentId').references(() => comment.id, {onDelete: 'cascade'})
 })
 
 export const artRelations = relations(art, ({ one, many  }) => ({
@@ -54,9 +55,10 @@ export const likeRelations = relations(like, ({ one }) => ({
         fields: [like.artId],
         references: [art.id],
     }),
+
 }))
 
-export const commentRelations = relations(comment, ({ one }) => ({
+export const commentRelations = relations(comment, ({ one, many }) => ({
     user: one(users, {
         fields: [like.userId],
         references: [users.id],
@@ -65,6 +67,14 @@ export const commentRelations = relations(comment, ({ one }) => ({
         fields: [like.artId],
         references: [art.id],
     }),
+    parrent: one(comment, {
+        fields: [comment.parrentId],
+        references: [comment.id],
+        relationName: "childrenComment"
+    }),
+    childrens: many(comment, {
+        relationName: "childrenComment"
+    })
 }))
 
 

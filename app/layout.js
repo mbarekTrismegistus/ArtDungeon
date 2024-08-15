@@ -3,6 +3,8 @@ import Header from "./components/header";
 import { NextUIProvider } from "@nextui-org/react";
 import {ThemeProvider as NextThemesProvider} from "next-themes";
 import "./globals.css"
+import { getSession } from "./libs/session";
+
 
 export const metadata = {
   title: "Create Next App",
@@ -11,20 +13,22 @@ export const metadata = {
 
 export default async function RootLayout({ children }) {
 
-
+  const session = await getSession()
 
   return (
-    <Providers>
+    
         <html lang="en">
-          <body>
-            <NextUIProvider>
-              <NextThemesProvider attribute="class" defaultTheme="dark">
-                <Header/>
-                {children}
-              </NextThemesProvider>
-            </NextUIProvider>
+          <body className="dark:bg-zinc-950">
+            <Providers>
+              <NextUIProvider>
+                <NextThemesProvider attribute="class" defaultTheme="dark">
+                  <Header session={session}/>
+                  {children}
+                </NextThemesProvider>
+              </NextUIProvider>
+            </Providers>
           </body>
         </html>
-    </Providers>
+    
   );
 }

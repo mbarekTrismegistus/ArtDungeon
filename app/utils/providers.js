@@ -2,7 +2,8 @@
 
 import { QueryClient } from "@tanstack/react-query";
 import { QueryClientProvider } from "@tanstack/react-query";
-import { SessionProvider } from "next-auth/react"
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import { AppProgressBar as ProgressBar } from 'next-nprogress-bar';
 
 
 
@@ -12,9 +13,15 @@ export default function Providers({ children }) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <SessionProvider>
-          {children}
-      </SessionProvider>
+      <GoogleOAuthProvider clientId="812937698268-14md8miugbmnnc39phnutj3ibr4tk5r9.apps.googleusercontent.com">
+        {children}
+        <ProgressBar 
+          height="3px"
+          color="#14b8a6"
+          options={{ showSpinner: false }}
+          shallowRouting
+        />
+      </GoogleOAuthProvider>
     </QueryClientProvider>
   );
 }

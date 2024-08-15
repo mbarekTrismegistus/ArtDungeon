@@ -7,7 +7,6 @@ import { SubmitButton } from "./submitButton"
 import { useFormState } from "react-dom";
 import { useState } from "react";
 import { Images, PlusCircle } from "react-bootstrap-icons";
-import { useSession } from "next-auth/react";
 import { TagInput } from "emblor";
 import { useFormStatus } from 'react-dom'
 
@@ -17,7 +16,7 @@ const initialState = {
 }
 
 
-export default function FormArt() {
+export default function FormArt(props) {
 
     const [state, formAction] = useFormState(AddArt, initialState)
     const [fileUploading, setUploading] = useState(false)
@@ -28,7 +27,7 @@ export default function FormArt() {
     const [activeTagIndex, setActiveTagIndex] = useState(null);
     const { pending } = useFormStatus();
 
-    let session = useSession()
+    let session = props.session
 
     function validate(e){
             if(e.target.value === ""){
@@ -95,9 +94,6 @@ export default function FormArt() {
         });
     }
 
-    if(session.status === "loading"){
-        return <Skeleton className="min-h-[400px] max-h-[500px] mx-auto rounded-xl"/>
-    }
 
     return (
         <div>
@@ -181,7 +177,7 @@ export default function FormArt() {
                                 <Input name="title" isInvalid={validated.title?.isInvalid} errorMessage={validated.title?.msg}  onChange={validate} label="Title" className="mb-5" placeholder="Add a Title"/>
                                 <Textarea name="description" isInvalid={validated.description?.isInvalid} errorMessage={validated.description?.msg} onChange={validate} label="Description" className="mb-5" placeholder="Describe Your Piece Art !"/>
                                 <input type="hidden" name="media" value={images}/>
-                                <input type="hidden" value={session.data.user.id} name="userId"/>
+                                <input type="hidden" value={session.user.id} name="userId"/>
                                 <TagInput 
                                     setTags = {(newTags) => {setTags(newTags)}}
                                     tags={tags}

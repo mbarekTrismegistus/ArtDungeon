@@ -15,6 +15,7 @@ import commentAction from "../actions/comments";
 import { useFormState } from "react-dom";
 import { FaRegComment } from "react-icons/fa6";
 import { SubmitButton } from "./submitButton";
+import CommentList from "./commentList";
 
 export default function Art(props) {
 
@@ -26,6 +27,9 @@ export default function Art(props) {
     const [isLiked, setIsLiked] = useState(props.isLiked)
     const [liking, setIsliking] = useState(false)
     const [state, formAction] = useFormState(commentAction, initialState)
+
+
+    
     
     return (
 
@@ -103,28 +107,23 @@ export default function Art(props) {
                 <h1 className="font-bold text-2xl">Comments</h1>
                 <form action={formAction}>
                     <Textarea
+                        isDisabled={props.userId ? false : true}
                         name="content"
                         color="primary"
                         variant="underlined"
                         label="Comment"
-                        placeholder="Enter your Comment"
+                        placeholder={props.userId ? "Entre your comment" : "login first"}
                         className="col-span-12 md:col-span-6 mb-6 mt-5"
-                        endContent={<SubmitButton/>}
+                        endContent={props.userId && <SubmitButton>Comment</SubmitButton>}
                     />
                     <input type="hidden" name="artId" value={data.id}/>
                 </form>
                 <div>
-                    {data.comment.map((c) => {
-                        return(
-                            <div className="flex gap-4 items-center py-5" key={c.id}>
-                                <Avatar src={c.user.image} size="lg"/>
-                                <div>
-                                    <p className="font-bold">{c.user.username}</p>
-                                    {c.content}
-                                </div>
-                            </div>
-                        )
-                    })}
+                    {props.comments[null]?.length > 0 ?
+                        <CommentList userId={props.userId} cg={props.comments} comments={props.comments[null]}/>
+                    :
+                    <p className="text-2xl font-bold text-center p-5 pb-[50px]">No Comment Yet</p>
+                    }
                 </div>
             </div>
         </div>

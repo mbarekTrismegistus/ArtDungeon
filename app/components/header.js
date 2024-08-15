@@ -1,39 +1,38 @@
 "use client"
 
 import React from 'react'
-import { signIn, signOut, useSession } from 'next-auth/react'
-import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Button, Link, Avatar} from "@nextui-org/react";
+import { signIn } from 'next-auth/react'
+import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Button, Avatar} from "@nextui-org/react";
 import ThemeSwitcher from './themeSwitcher';
+import { deleteSession } from '../libs/session';
+import Link from 'next/link';
 
-export default function Header() {
+export default function Header(props) {
 
-
-    let session = useSession()
 
     return (
       <Navbar className='bg-transparent backdrop-saturate-100 fixed' maxWidth={'full'}>
         <NavbarBrand>
-          <p className="font-bold text-inherit dark:text-white">Art Dungeon</p>
+          <Link href={"/"} className="font-bold text-inherit dark:text-white">Art Dungeon</Link>
         </NavbarBrand>
-          {session.status == "loading" ? 
-            "loading"
+          {props.session ? 
+              <div className='flex items-center gap-4'>
+                <Avatar isBordered src={props.session?.user.image} color='primary'/>
+                <p>{props.session?.user.username}</p>
+                <Link href={"/add"}>Add Art !</Link>
+                <Button color='danger' radius='full' variant='flat' onClick={() => deleteSession()}>Sign Out</Button>
+              </div>
             :
-            session.status == "unauthenticated" ?
               <NavbarContent justify="end">
                 <NavbarItem className="hidden lg:flex">
-                  <Link onClick={() => signIn("google")}>Login</Link> 
+                  <Link href={"/login"}>Login</Link> 
                 </NavbarItem>
                 <NavbarItem>
-                  <Button as={Link} color="primary" href="#" variant="flat">
+                  <Button as={Link} href={"/signup"} color="primary" variant="flat">
                     Sign Up
                   </Button>
                 </NavbarItem>
               </NavbarContent>
-            :
-            <div className='flex items-center gap-4'>
-              <Avatar isBordered src={session.data.user.image} color='primary'/>
-              <Button color='danger' radius='full' variant='flat' onClick={() => signOut()}>Sign Out</Button>
-            </div>
 
           }
           <ThemeSwitcher/>
