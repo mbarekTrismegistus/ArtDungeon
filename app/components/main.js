@@ -4,8 +4,10 @@ import React from 'react'
 import { Button } from '@nextui-org/react'
 import { Arrow90degLeft, ArrowDownCircle } from 'react-bootstrap-icons'
 import { Carousel, CarouselContent, CarouselNext, CarouselPrevious } from '@/components/ui/carousel'
+import dynamic from 'next/dynamic'
 
 export default function Main({children}) {
+  const GoogleAds = dynamic(() => import('../utils/googleAds'), { ssr: false })
   return (
     <div>
       <div className='flex flex-col items-center h-[100vh] justify-center relative mb-5'>
@@ -99,6 +101,7 @@ export default function Main({children}) {
         </Carousel>
         <div>
           {children}
+          <GoogleAds/>
         </div>
       </div>
     </div>

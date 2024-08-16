@@ -131,3 +131,7 @@ img {
     @apply bg-background text-foreground;
   }
 }
+
+#adsbygoogle{
+  width: 300px!important;
+}

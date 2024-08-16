@@ -6,6 +6,7 @@ import "./globals.css"
 import { getSession } from "./libs/session";
 
 
+
 export const metadata = {
   title: "Art Dungeon",
   description: "A place in the wired for your art",
@@ -31,7 +32,9 @@ export default async function RootLayout({ children }) {
                 </NextThemesProvider>
               </NextUIProvider>
             </Providers>
+            
           </body>
+          
         </html>
     
   );
