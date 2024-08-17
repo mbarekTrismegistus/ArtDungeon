@@ -49,6 +49,8 @@ export default async function page({params}) {
     return (
         
         <div className="mt-[80px]">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1802898703606614"
+            crossorigin="anonymous"></script>
             <Suspense fallback=" loading...">
                 <Art data={data} comments={Commentgroup} likeCount={likeNumber[0].count} commentCount={countComment[0].count} isLiked={isLiked.length === 0 ? false : true} userId={session ? session.user.id : undefined}/>
             </Suspense>

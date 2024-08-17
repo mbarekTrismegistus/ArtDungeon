@@ -10,6 +10,8 @@ export default function Main({children}) {
 
   return (
     <div>
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1802898703606614"
+      crossorigin="anonymous"></script>
       <div className='flex flex-col items-center h-[100vh] justify-center relative mb-5'>
         <div className='absolute top-[-500px] heroGradient rounded-full dark:opacity-25 opacity-[0.3]'></div>
         <div className='absolute top-0 z-10 h-[50vh] w-full bg-gradient-to-b from-slate-100 to-transparent dark:from-zinc-950'></div>
