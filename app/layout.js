@@ -26,8 +26,8 @@ export default async function RootLayout({ children }) {
         <html lang="en">
           <head>
             <AdSense/>
-            <script src="https://alwingulla.com/88/tag.min.js" data-zone="89758" async data-cfasync="false"></script>
-          </head>
+            <script crossOrigin="anonymous" src="https://alwingulla.com/88/tag.min.js" data-zone="89758" async data-cfasync="false"></script>
+          </head> 
           <body className="dark:bg-zinc-950">
             <Providers>
               <NextUIProvider>
