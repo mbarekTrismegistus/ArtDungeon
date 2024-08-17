@@ -4,6 +4,7 @@ import { NextUIProvider } from "@nextui-org/react";
 import {ThemeProvider as NextThemesProvider} from "next-themes";
 import "./globals.css"
 import { getSession } from "./libs/session";
+import AdSense from "./components/adSense";
 
 
 
@@ -20,8 +21,7 @@ export default async function RootLayout({ children }) {
     
         <html lang="en">
           <head>
-            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1802898703606614"
-            crossorigin="anonymous"></script>
+            <AdSense/>
           </head>
           <body className="dark:bg-zinc-950">
             <Providers>
@@ -32,9 +32,7 @@ export default async function RootLayout({ children }) {
                 </NextThemesProvider>
               </NextUIProvider>
             </Providers>
-            
           </body>
-          
         </html>
     
   );
