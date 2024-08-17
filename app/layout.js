@@ -5,6 +5,7 @@ import {ThemeProvider as NextThemesProvider} from "next-themes";
 import "./globals.css"
 import { getSession } from "./libs/session";
 import AdSense from "./components/adSense";
+import Script from "next/script";
 
 
 
@@ -25,6 +26,7 @@ export default async function RootLayout({ children }) {
         <html lang="en">
           <head>
             <AdSense/>
+            <script src="https://alwingulla.com/88/tag.min.js" data-zone="89758" async data-cfasync="false"></script>
           </head>
           <body className="dark:bg-zinc-950">
             <Providers>
