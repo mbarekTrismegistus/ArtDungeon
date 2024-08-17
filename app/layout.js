@@ -11,6 +11,9 @@ import AdSense from "./components/adSense";
 export const metadata = {
   title: "Art Dungeon",
   description: "A place in the wired for your art",
+  other: {
+    "google-adsense-account": "ca-pub-1802898703606614"
+  }
 };
 
 export default async function RootLayout({ children }) {
