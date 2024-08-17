@@ -10,7 +10,7 @@ export default function GoogleAds() {
     
       <Adsense
         client="ca-pub-1802898703606614"
-        slot="1388364288"
+        slot="2935048543"
         style={{ display: "block" }}
         format="auto"
       />
