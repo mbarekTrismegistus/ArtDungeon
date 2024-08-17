@@ -21,7 +21,7 @@ export default async function RootLayout({ children }) {
         <html lang="en">
           <head>
             <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1802898703606614"
-            crossOrigin="anonymous"></script>
+            crossorigin="anonymous"></script>
           </head>
           <body className="dark:bg-zinc-950">
             <Providers>

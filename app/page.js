@@ -16,6 +16,7 @@ export default function Home() {
             <Arts/>
           </Suspense>
         </Main>
+        
     </div>
   );
 }
