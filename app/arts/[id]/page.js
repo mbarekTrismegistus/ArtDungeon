@@ -4,6 +4,7 @@ import { db } from "@/app/db";
 import { and, count, desc, eq } from "drizzle-orm";
 import { art, comment, like } from "@/drizzle/schema";
 import { getSession } from "@/app/libs/session";
+import Loading from "@/app/loading";
 
 
 export const revalidate = 0
@@ -51,7 +52,7 @@ export default async function page({params}) {
         <div className="mt-[80px]">
             <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1802898703606614"
             crossorigin="anonymous"></script>
-            <Suspense fallback=" loading...">
+            <Suspense fallback={<Loading/>}>
                 <Art data={data} comments={Commentgroup} likeCount={likeNumber[0].count} commentCount={countComment[0].count} isLiked={isLiked.length === 0 ? false : true} userId={session ? session.user.id : undefined}/>
             </Suspense>
         </div>
