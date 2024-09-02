@@ -36,7 +36,7 @@ export default function Main({children}) {
           </div>
           <div className='my-4 w-[50vw] text-center'>
             <h2 className='dark:text-slate-400 text-slate-900 font-thin flex items-center'>
-              This is merely another random space in the wired world, and a part of the <a className='ms-3' href='https://wiredcollective.neocities.org/'><img src='/wiredcollectivebutton.png'/></a>
+              This is merely another random space in the wired world, and a part of the <a className='ms-3' href="https://wiredcollective.neocities.org/"><img src="https://wiredcollective.neocities.org/webringimages/wiredcollectivebutton.png" alt="WIRED COLLECTIVE WEBRING"/></a>
             </h2>
             <h2 className='dark:text-slate-400 text-slate-900 font-thin'>
               A place for artists to share their art and thoughts with other fellow artist :)
