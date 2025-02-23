@@ -20,11 +20,11 @@ export default function Header(props) {
                 <Avatar isBordered src={props.session?.user.image} color='primary'/>
                 <p>{props.session?.user.username}</p>
                 <Link href={"/add"}>Add Art !</Link>
-                <Button color='danger' radius='full' variant='flat' onClick={() => deleteSession()}>Sign Out</Button>
+                <Button color='danger' radius='full' variant='flat' onClick={() => deleteSession()}>Logout</Button>
               </div>
             :
               <NavbarContent justify="end">
-                <NavbarItem className="hidden lg:flex">
+                <NavbarItem className="lg:flex">
                   <Link href={"/login"}>Login</Link> 
                 </NavbarItem>
                 <NavbarItem>

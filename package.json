@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "cypress:open": "cypress open"
   },
   "dependencies": {
     "@ctrl/react-adsense": "^1.7.0",
@@ -25,6 +26,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
+    "cypress": "^14.0.3",
     "drizzle-orm": "^0.32.0",
     "embla-carousel-react": "^8.1.6",
     "emblor": "^1.4.0",

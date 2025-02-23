@@ -13,7 +13,7 @@ export default function Providers({ children }) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <GoogleOAuthProvider clientId="812937698268-14md8miugbmnnc39phnutj3ibr4tk5r9.apps.googleusercontent.com">
+      <GoogleOAuthProvider clientId={process.env.AUTH_GOOGLE_ID}>
         {children}
         <ProgressBar 
           height="3px"

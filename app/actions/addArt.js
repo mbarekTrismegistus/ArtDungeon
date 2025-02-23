@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { imgbbUploader } from "imgbb-uploader";
 import { db } from "../db";
 import { art } from "@/drizzle/schema";
+import { redirect } from "next/navigation";
 
 
  
@@ -11,25 +12,24 @@ export default async function AddArt(prevState,formData) {
 
   let media = formData.get("media").split(",")
 
-  if(media[0] === ""){
-    return {
-      noMedia: true,
-      message: "C'mon add some images of ur beautiful art"
-    }
-  }
-  console.log(formData)
+  // if(media[0] === ""){
+  //   return {
+  //     noMedia: true,
+  //     message: "C'mon add some images of ur beautiful art"
+  //   }
+  // }
+  // console.log(formData)
   try {
     let res = await db.insert(art).values({
       title: formData.get("title"),
       description: formData.get("description"),
       media: media,
       userId: Number(formData.get("userId"))
-    })
+    }).returning()
     if(res){
-      revalidatePath("/")
       return {
         ...prevState,
-        message: `Your Art : ${res.title} Added !`,
+        message: `Your Art : ${res[0].title} Added !`,
         discErrorMessage: "A Description is Required",
         noDescription: false,
         titleErrorMessage: "A Title is Required",
