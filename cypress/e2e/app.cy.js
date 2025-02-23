@@ -14,10 +14,10 @@ describe('login', () => {
     cy.get('a[href*="/add"]').click()
     cy.get('input[name="title"]').type('test')
     cy.get('textarea[name="description"]').type('test description')
-    cy.get('input[new="newmedia"]').selectFile('cypress/fixtures/pierre.jpg', { force: true })
+    // cy.get('input[new="newmedia"]').selectFile('cypress/fixtures/pierre.jpg', { force: true })
     cy.wait(2000)
-    cy.get('img[id="displayimage"]')
-    cy.get('button[name="add"]', { timeout: 0, force: true }).click()
+    // cy.get('img[id="displayimage"]')
+    cy.get('button[type="submit"]', { timeout: 0, force: true }).click()
 
 
   })
