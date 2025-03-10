@@ -60,7 +60,7 @@ export default function Art(props) {
                                 <div className="flex items-center pt-5">
                         
                                     {props.userId ?
-                                        <Button variant={`${isLiked ? "shadow" : "flat"}`} isDisabled={liking} color="primary" radius="full" isIconOnly className="flex items-center justify-center" onClick={
+                                        <Button name="like" variant={`${isLiked ? "shadow" : "flat"}`} isDisabled={liking} color="primary" radius="full" isIconOnly className="flex items-center justify-center" onClick={
                                             async () => {
                                                 if(!isLiked){
                                                     setIsliking(true)
