@@ -14,9 +14,9 @@ export default function Home() {
     <div className={myFont.className}>
       
         <Main>
-          <Suspense fallback={<Loading/>}>
+          {/* <Suspense fallback={<Loading/>}>
             <Arts/>
-          </Suspense>
+          </Suspense> */}
         </Main>
         
     </div>
