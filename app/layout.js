@@ -12,7 +12,7 @@ export const metadata = {
   title: "Art Dungeon",
   description: "A place in the wired for your art",
   other: {
-    "ppck-ver": "bd70be61fde39fdbec1a8880fb7dd460",
+    "ppck-ver": "93e9abb45b7fee127a0afe20863ba44d",
   },
 };
 
